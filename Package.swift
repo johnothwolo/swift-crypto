@@ -29,33 +29,33 @@ let development = false
 
 let swiftSettings: [SwiftSetting]
 let dependencies: [Target.Dependency]
-if development {
+//if development {
     swiftSettings = [
         .define("CRYPTO_IN_SWIFTPM"),
-        // .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"),
+        .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"),
     ]
     dependencies = [
         "CCryptoBoringSSL",
         "CCryptoBoringSSLShims",
         "CryptoBoringWrapper"
     ]
-} else {
-    let platforms: [Platform] = [
-        Platform.linux,
-        Platform.android,
-        Platform.windows,
-        Platform.wasi,
-    ]
-    swiftSettings = [
-        .define("CRYPTO_IN_SWIFTPM"),
-        // .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API", .when(platforms: platforms)),
-    ]
-    dependencies = [
-        .target(name: "CCryptoBoringSSL", condition: .when(platforms: platforms)),
-        .target(name: "CCryptoBoringSSLShims", condition: .when(platforms: platforms)),
-        .target(name: "CryptoBoringWrapper", condition: .when(platforms: platforms))
-    ]
-}
+//} else {
+//    let platforms: [Platform] = [
+//        Platform.linux,
+//        Platform.android,
+//        Platform.windows,
+//        Platform.wasi,
+//    ]
+//    swiftSettings = [
+//        .define("CRYPTO_IN_SWIFTPM"),
+//        .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API", .when(platforms: platforms)),
+//    ]
+//    dependencies = [
+//        .target(name: "CCryptoBoringSSL", condition: .when(platforms: platforms)),
+//        .target(name: "CCryptoBoringSSLShims", condition: .when(platforms: platforms)),
+//        .target(name: "CryptoBoringWrapper", condition: .when(platforms: platforms))
+//    ]
+//}
 
 let package = Package(
     name: "swift-crypto",
