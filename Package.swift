@@ -32,7 +32,7 @@ let dependencies: [Target.Dependency]
 if development {
     swiftSettings = [
         .define("CRYPTO_IN_SWIFTPM"),
-        .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"),
+        // .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API"),
     ]
     dependencies = [
         "CCryptoBoringSSL",
@@ -48,7 +48,7 @@ if development {
     ]
     swiftSettings = [
         .define("CRYPTO_IN_SWIFTPM"),
-        .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API", .when(platforms: platforms)),
+        // .define("CRYPTO_IN_SWIFTPM_FORCE_BUILD_API", .when(platforms: platforms)),
     ]
     dependencies = [
         .target(name: "CCryptoBoringSSL", condition: .when(platforms: platforms)),
